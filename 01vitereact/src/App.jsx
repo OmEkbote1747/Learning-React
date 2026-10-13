@@ -1,8 +1,8 @@
 
 function App() {
-
+  const username = "Om Ekbote"
   return (
-    <h1>Hello, World! | Om Ekbote</h1>
+    <h1>Hello, World! | {username}</h1>
   )
 }
 
