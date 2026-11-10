@@ -13,8 +13,8 @@ function Square({value, onSquareClick}){
 
 function Board({xIsNext,squares, onPlay}) {
 
-  function handleClick(i){
-    if(squares[i] || calculateWinner(squares)){
+  function handleClick(i) {
+    if (squares[i] || calculateWinner(squares)) {
       return;
     }
 
@@ -22,8 +22,7 @@ function Board({xIsNext,squares, onPlay}) {
 
     if (xIsNext) {
       nextSquares[i] = "X";
-    }
-    else {
+    } else {
       nextSquares[i] = "O";
     }
 
@@ -35,7 +34,7 @@ function Board({xIsNext,squares, onPlay}) {
   if (winner) {
     status = 'Winner: ' + winner;
   } else {
-    status = 'Next Player: ' + (xIsNext ? 'X':'O');
+    status = 'Next Player: ' + (xIsNext ? 'X' : 'O');
   }
 
   return (
@@ -85,9 +84,18 @@ function Game() {
     } else {
       description = 'Go to game start';
     }
+     let historyButton = <button onClick={() => jumpTo(move)} className='border-1 m-1 px-1'>{move + 1}. <b>{description}</b></button>
+     let thisMove = 'You are at move #' + move;
+
+     let returnItem;
+     if (move === currentMove){
+       returnItem = thisMove;
+     } else {
+       returnItem = historyButton;
+     }
     return (
         <li key={move}>
-          <button onClick={() => jumpTo(move)} className='border-1 m-1 px-1'>{move + 1}. <b>{description}</b></button>
+          {returnItem}
         </li>
     );
   });
